@@ -8,6 +8,8 @@ project.lock.json
 
 # Visual Studio Code
 .vscode
+.idea
+.vs
 
 # User-specific files
 *.suo

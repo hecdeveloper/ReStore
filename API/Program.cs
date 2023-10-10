@@ -1,3 +1,4 @@
+using API.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,4 +29,20 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+var scope = app.Services.CreateScope();
+var context = scope.ServiceProvider.GetRequiredService<API.Data.StoreContext>();
+var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+try
+{
+    context.Database.Migrate();
+    DbInitializer.Initialize(context);
+    
+} 
+catch (System.Exception ex) 
+{
+    
+    logger.LogError(ex, "An error occurred while migrating or initializing the database.");
+}
+
 app.Run();
+
