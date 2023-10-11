@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
-import { Product } from "../models/products";
 import Catalog from "../../features/catalog/Catalog";
-import { Typography } from "@mui/material";
+import { Product } from "../models/products";
+import Header from "./Header";
+import { Container, CssBaseline } from "@mui/material";
 
 
 
 function App() {
   const [products, setProducts] = useState<Product[]>([]);
 
-  useEffect(() => {
+  useEffect(() => { 
     fetch('http://localhost:5000/api/products')
       .then(response => response.json())
       .then(data => setProducts(data))
@@ -32,8 +33,11 @@ function App() {
   return (
     <>
       <div className='app'>
-        <Typography variant="h1">Re-Store</Typography>
+        <CssBaseline />
+        <Header/>
+        <Container>
         <Catalog products={products} addProduct={addProduct} />
+        </Container>
       </div>
     </>
   )
