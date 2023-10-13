@@ -10,7 +10,7 @@ const ProductCard = ({ product }: Props) => {
     return (
         <Card sx={{ maxWidth: 345 }}>
             <CardHeader
-                avatar={
+                avatar={ 
                     <Avatar sx={{ bgcolor: 'secondary.main' }}>
                         {product.name.charAt(0).toUpperCase()}
                     </Avatar>

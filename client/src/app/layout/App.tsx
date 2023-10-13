@@ -1,30 +1,38 @@
 import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import Catalog from "../../features/catalog/Catalog";
 import Header from "./Header";
+import { useState } from "react";
 
 
 
 function App() {
-const theme = createTheme({
-  palette: {
-    mode: 'dark',
+  const [darkMode, setDarkMode] = useState(true);
+  const paletteType = darkMode ? 'dark' : 'light';
+  const theme = createTheme({
+    palette: {
+      mode: paletteType,
+      background: {
+        default: paletteType === 'light' ? '#eaeaea' : '#121212'
+      }
+    }
+  });
+  function handleThemeChange() {
+    setDarkMode(!darkMode);
   }
-});
- 
+
   return (
     <>
-    <ThemeProvider theme={theme}>
-      <div className='app'>
-        <CssBaseline />
-        <Header/>
-        <Container>
-        <Catalog/>
-        </Container>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className='app'>
+          <CssBaseline />
+          <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+          <Container>
+            <Catalog />
+          </Container>
+        </div>
       </ThemeProvider>
     </>
   )
 }
 
 export default App
-     
