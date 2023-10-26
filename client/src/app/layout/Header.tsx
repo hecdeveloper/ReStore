@@ -40,7 +40,7 @@ const Header = ({ darkMode, handleThemeChange }: Props) => {
     return (
         <AppBar position="static" sx={{ mb: 4 }}>
             <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
+                <Box display='flex' alignItems='center'>
                     <Typography
                         variant="h6"
                         component={NavLink}
@@ -59,7 +59,7 @@ const Header = ({ darkMode, handleThemeChange }: Props) => {
                         </ListItem>
                     ))}
                 </List>
-                <Box>
+                <Box display='flex' alignItems='center'>
                     <IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
                         <Badge badgeContent="4" color="secondary">
                             <ShoppingCart />
