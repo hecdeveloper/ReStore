@@ -2,6 +2,8 @@ import { Container, CssBaseline, ThemeProvider, createTheme } from "@mui/materia
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.min.css';
 
 
 
@@ -23,6 +25,7 @@ function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
+        <ToastContainer position='bottom-right' hideProgressBar theme="colored" />
         <div className='app'>
           <CssBaseline />
           <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
